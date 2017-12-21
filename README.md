@@ -1,5 +1,5 @@
 
-# This repo contains the source code to initialize a micro swarm cluster with 2 rpi3 and a x86_64 device with a Linux OS
+# This repo contains the source code to initialize a micro docker swarm cluster with 2 rpi3 and a x86_64 device with a Linux OS
 ### This Source code is part of Emergent Internet Services Lecture of Software Engineering MSc at University of Coimbra
 
 The code present in this repo simulates a FOG environment, with local data producers inserting data into a centralized node
@@ -38,10 +38,9 @@ You should be able to set the Environment variables present a init-swarm.sh
 
 All that is required is
 
-´´´
-chmod+x init-swarm.sh && ./init-swarm.sh
-export manager=192.168.1.X && export slave1=192.168.1.X && export slave1=192.168.1.X bash init-swarm.sh
-´´´
+    chmod+x init-swarm.sh && ./init-swarm.sh
+    export manager=192.168.1.X && export slave1=192.168.1.X && export slave1=192.168.1.X bash init-swarm.sh
+
 
 
 Available services
@@ -54,6 +53,7 @@ http://slave2-ip-here - Slave2
 
 
 ### Removing the environment 
-´´´
-chmod+x init-swarm.sh && ./cleanup.sh
-´´´ 
+
+
+    chmod+x init-swarm.sh && ./cleanup.sh
+
