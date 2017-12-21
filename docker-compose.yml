@@ -1,0 +1,36 @@
+version: "3.2"
+services:
+    demo:
+        image: localhost:5000/swarm:demo_v1
+        ports:
+            - mode: host
+              target: 5000
+              published: 80
+        deploy:
+            mode: global
+            placement:
+                constraints: [node.labels.arch == arm]
+    kibana:
+        image: kibana
+        environment: 
+            - ELASTICSEARCH_URL=http://elasticsearch:9200
+        ports:
+            - 5601:5601
+        deploy:
+            replicas: 1
+            placement:
+                constraints: [node.labels.arch == x86]
+        
+    elasticsearch:
+        image: elasticsearch:alpine
+        volumes: 
+            - ek:/usr/share/elasticsearch/data
+        environment:
+            ES_JAVA_OPTS: '-Xms2048m -Xmx2048m'
+        deploy:
+            replicas: 1
+            placement:
+                constraints: [node.labels.arch == x86]
+volumes:
+    ek:
+
